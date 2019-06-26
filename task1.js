@@ -10,9 +10,10 @@ function fillTheArray(array) {
     else throw new Error("wrong argument type")
 }
 
-
 function multiplyGreatest(array) {
-    array.sort((a, b) => a > b);
-    console.log(array);
+    const newArray = array.sort((a, b) => a > b);
+    const reducer = (accumulator, currentValue, index, currentArray) => {
+        return (index < currentArray.length - 3) ? accumulator : Math.imul(accumulator, currentValue);
+    };
+    return newArray.reduce(reducer,1);
 }
-multiplyGreatest(fillTheArray([]));
